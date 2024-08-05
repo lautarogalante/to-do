@@ -16,12 +16,22 @@ namespace ToDoList.Services
         {
             task.CreatedAt = DateTime.Now;
             var newTask = await taskRepository.CreateTask(task);
+            if (newTask == null)
+            {
+                return Result<Tasks?>.ErrorResult("The task could not be created.");
+            }
             return Result<Tasks?>.SuccessResult(newTask);
         }
 
         public async Task<Result<IEnumerable<Tasks?>>> GetAllTasks()
         {
             var getTask = await taskRepository.GetAllTasks();
+            if (getTask == null)
+            {
+                return Result<IEnumerable<Tasks?>>.ErrorResult("Error when obtaining tasks.");
+
+                    
+            }
             return Result<IEnumerable<Tasks?>>.SuccessResult(getTask);
 
         }
@@ -29,6 +39,10 @@ namespace ToDoList.Services
         public async Task<Result<Tasks?>> GetTaskById(int id)
         {
             var task = await taskRepository.GetTaskById(id);
+            if (task == null)
+            {
+                return Result<Tasks?>.ErrorResult("Error when obtaining the task.");
+            }
             return Result<Tasks?>.SuccessResult(task); 
         }
 
@@ -36,6 +50,10 @@ namespace ToDoList.Services
         {
             task.CreatedAt = DateTime.Now;
             var updateTask = await taskRepository.UpdateTask(id, task);
+            if (updateTask == null)
+            {
+                return Result<Tasks?>.ErrorResult("Error when updating the task.");
+            }
             return Result<Tasks?>.SuccessResult(updateTask);
  
         }

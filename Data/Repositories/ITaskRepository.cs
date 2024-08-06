@@ -1,4 +1,5 @@
-﻿using ToDoList.Models;
+﻿using Microsoft.AspNetCore.Components.Web;
+using ToDoList.Models;
 
 namespace ToDoList.Data.Repository
 {
@@ -9,6 +10,5 @@ namespace ToDoList.Data.Repository
         Task<Tasks?> CreateTask(Tasks task);
         Task<Tasks?> UpdateTask(int id, Tasks task);
         Task<Tasks?> DeleteTask(int id);
-
     }
 }

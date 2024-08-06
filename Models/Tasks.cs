@@ -8,20 +8,18 @@ namespace ToDoList.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        //[NotNull]
         [MaxLength(50)]
         public string Title { get; set; }
         [Required]
-        //[NotNull]
-
         [MaxLength(50)]
         public string Name { get; set; }
 
         [Required]
-        //[NotNull]
-
         [MaxLength(255)]
         public string Description { get; set; }
+
+        [Required]
+        public bool IsCompleted { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime CreatedAt { get; set; }

@@ -7,14 +7,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ToDoList.Data;
 
-
 #nullable disable
 
 namespace ToDoList.Migrations
 {
     [DbContext(typeof(TaskDbContext))]
-    [Migration("20240802172712_Task")]
-    partial class Task
+    [Migration("20240806202246_Tasks")]
+    partial class Tasks
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,7 +25,7 @@ namespace ToDoList.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ToDoList.Models.Task", b =>
+            modelBuilder.Entity("ToDoList.Models.Tasks", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -42,6 +41,9 @@ namespace ToDoList.Migrations
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
+
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()

@@ -38,6 +38,7 @@ namespace ToDoList.Data.Repository
                 updateTask.Name = tasks.Name;
                 updateTask.Title = tasks.Title;
                 updateTask.Description = tasks.Description;
+                updateTask.IsCompleted = tasks.IsCompleted;
                 updateTask.CreatedAt = tasks.CreatedAt;
             }
             await taskDbContext.SaveChangesAsync();
@@ -59,5 +60,6 @@ namespace ToDoList.Data.Repository
             }
             return null;
         }
+
     }
 }
